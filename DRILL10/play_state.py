@@ -34,8 +34,9 @@ class Boy:
         elif self.dir == -1:
             self.image.clip_draw(self.frame*100, 0, 100, 100, self.x, self.y)
         if self.item == 'p':
-            self.x, self.y = random.randint(100, 700), 90
-            self.frame = random.randint(0, 7)
+            self.image.clip_draw(self.frame * 100, 100, 100, 100, self.x, self.y)
+            self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y)
+            self.x, self.y = random.randint(100, 700), 9
         elif self.item == 'm':
             self.boy -= boy
 
