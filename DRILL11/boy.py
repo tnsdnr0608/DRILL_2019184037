@@ -143,15 +143,19 @@ class AUTO_RUN:
     def do(self): # 상태에 있을 때 지속적으로 행하는 행위. 숨쉬기
         self.frame = (self.frame + 1) % 8
         self.x += self.dir
+        if self.x >= 800:
+            self.dir = -1
+        elif self.x <= 0:
+            self.dir = 1
         self.x = clamp(0, self.x, 800)
         pass
 
     def draw(self):
         print('AUTO RUN')
         if self.dir == -1:
-            self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y)
+            self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y, 300, 300)
         elif self.dir == 1:
-            self.image.clip_draw(self.frame * 100, 100, 100, 100, self.x, self.y)
+            self.image.clip_draw(self.frame * 100, 100, 100, 100, self.x, self.y, 300, 300)
         pass
 
 #3 상태 변환 기술
