@@ -126,18 +126,13 @@ class SLEEP:
         pass
 class AUTO_RUN:
     def enter(self, event): # 상태에 들어갈 때 행하는 액션
-        if event == RD:
-            self.dir += 1
-        elif event == LD:
-            self.dir -= 1
-        elif event == RU:
-            self.dir -= 1
-        elif event == LU:
-            self.dir += 1
+        if self.face_dir == 1:
+            self.dir = 1
+        elif self.face_dir == -1:
+            self.dir = -1
         pass
 
     def exit(self): # 상태를 나올 때 행하는 액션, ex) 고개 들기
-        self.face_dir = self.dir
         pass
 
     def do(self): # 상태에 있을 때 지속적으로 행하는 행위. 숨쉬기
@@ -153,9 +148,9 @@ class AUTO_RUN:
     def draw(self):
         print('AUTO RUN')
         if self.dir == -1:
-            self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y, 300, 300)
+            self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y, 500, 150)
         elif self.dir == 1:
-            self.image.clip_draw(self.frame * 100, 100, 100, 100, self.x, self.y, 300, 300)
+            self.image.clip_draw(self.frame * 100, 100, 100, 100, self.x, self.y, 500, 150)
         pass
 
 #3 상태 변환 기술
